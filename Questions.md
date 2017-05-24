@@ -1,1 +1,3 @@
-MKDataBase, encapsulating the FMDataBase, is used for operating the database with objct.
+1. 什么时候需要把公开的方法，写成接口的形式？
+2. 递归锁在哪里用？
+3. 
