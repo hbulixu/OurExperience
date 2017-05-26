@@ -26,40 +26,41 @@
 			    }   
 		  
   2. 在数据库升级，或者其它某些需要顺序执行，并且不能跳着执行，那么可以把`break`去掉。例如：
-
-        switch (dbVersion) { // 获取当前数据库的版本号
-        case -1:
-        {
-            //创建系统消息表
-            [self createSystemMesDB];
-            //NSLog(@"初始化数据库");
-            
-            //创建400电话详情表 & 通话列表
-            [self createPhoneDetailTable];
-            [self createDBinfo];
-            [self setDBVerion:@"1"];
-         
-        }
-        case 1:
-        {
-           //第二版升级数据库需要变更时
-            [self createSpecialClientImMessageTable];
-            [self setDBVerion:@"2"];
-        }
-        case 2:
-        {
-            //下一版需要修改数据库时
-            [self createQuickReplyMessageTable];
-            //创建用户备注的表
-            [self creatRemarkMessageTable];
-            [self setDBVerion:@"3"];
-            
-            
-        }
-        case 3:
-        {
-            //第三版本需要改动的字段
-        }
+		
+		
+		        switch (dbVersion) { // 获取当前数据库的版本号
+		        case -1:
+		        {
+		            //创建系统消息表
+		            [self createSystemMesDB];
+		            //NSLog(@"初始化数据库");
+		            
+		            //创建400电话详情表 & 通话列表
+		            [self createPhoneDetailTable];
+		            [self createDBinfo];
+		            [self setDBVerion:@"1"];
+		         
+		        }
+		        case 1:
+		        {
+		           //第二版升级数据库需要变更时
+		            [self createSpecialClientImMessageTable];
+		            [self setDBVerion:@"2"];
+		        }
+		        case 2:
+		        {
+		            //下一版需要修改数据库时
+		            [self createQuickReplyMessageTable];
+		            //创建用户备注的表
+		            [self creatRemarkMessageTable];
+		            [self setDBVerion:@"3"];
+		            
+		            
+		        }
+		        case 3:
+		        {
+		            //第三版本需要改动的字段
+		        }
 
  这种方式，可以解决连续版本升级也可以解决跨版本升级带来的数据库升级问题。
 
